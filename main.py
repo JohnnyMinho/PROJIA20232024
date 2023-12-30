@@ -14,15 +14,6 @@ def imprimir_menu():
     8. Sair"""
     print(menu)
 
-
-def main():
-    grafo = Grafo()
-
-    while True:
-        imprimir_menu()
-        escolha = input("Escolha uma opção: ")
-
-
 def main():
 
     XPress_Delta=Xdelta()
@@ -30,18 +21,8 @@ def main():
     saida = -1
 
     while saida != 0:
-        """
-        print("1-Imprimir grafo ")
-        print("2-Desenhar Grafo")
-        print("3-Imprimir  nodos de Grafo")
-        print("4-Imprimir arestas de Grafo")
-        print("5-DFS")
-        print("6-BFS")
-        print("7 -Outra solução ")
-        print("0-Saír")
-        """
-        print
 
+        imprimir_menu()
         saida = int(input("introduza a sua opcao-> "))
         if saida == 0:
             print("saindo.......")

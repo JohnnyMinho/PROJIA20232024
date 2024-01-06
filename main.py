@@ -21,8 +21,8 @@ def main():
 
     XPress_Delta=Xdelta()
     XPress_Delta.ImplementarGrafo()
-    XPress_Delta.CarregarEncomendas()
     XPress_Delta.CarregarEstafetas()
+    XPress_Delta.CarregarEncomendas()
     saida = -1
 
     while saida != 0:
@@ -45,7 +45,7 @@ def main():
         elif saida == 5:
             inicio=input("Nodo inicial->")
             fim = input("Nodo final->")
-            caminho=XPress_Delta.solucaoDFS( inicio, fim)
+            caminho=XPress_Delta.solucaoDFS()
             print(caminho)
             if caminho != None:
                a = caminho[0]
@@ -55,7 +55,7 @@ def main():
         elif saida == 6:
             inicio = input("Nodo inicial->")
             fim = input("Nodo final->")
-            caminho=XPress_Delta.solucaoBFS(inicio,fim)
+            caminho=XPress_Delta.solucaoBFS()
             print(caminho)
             if caminho != None:
                 a = caminho[0]

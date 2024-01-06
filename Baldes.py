@@ -19,11 +19,6 @@ from queue import Queue
 
 class Balde():
 
-    # start deve ser a capacidade dos dois baldes no inicio ex (0,0) "estado inicial"
-    # goal deve ser o objectivo ex (2,0).  " estado final"
-    # os estados são representados por "(x,y)" como string, em que x e y representam
-    # as quantidades de agua nos jarros
-
     def __init__(self, start="(0,0)", goal="(2,0)", cap1=4, cap2=3):
         self.g=Grafo(directed=True)
         self.start=start

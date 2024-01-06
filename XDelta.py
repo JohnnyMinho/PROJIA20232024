@@ -10,6 +10,7 @@ from Condutor import condutor as empregado
 
 class Xdelta:
 
+    #A empresa é sediada na Rua do Fiado
     ruas_disp = []
 
     def __init__(self):
@@ -43,6 +44,7 @@ class Xdelta:
                 self.General_Graph.add_edge(rua, neighbor['neighbor_name'], neighbor['price'])
 
     def AdicionarEncomenda(self):
+        filename = "Encomendas.txt"
         print("Digite as seguintes informações com exatamente o seguinte formato peso,destino,ID_condutor,prazo(epoch):")
         saida = (input(""))
         encomenda_valida = 1
@@ -53,6 +55,10 @@ class Xdelta:
         if(peso>20 or peso < 0):
             print("Peso Inválido")
             encomenda_valida = 0
+        if(peso > 5):
+            veiculo = "Moto"
+        elif(peso <=5):
+            veiculo = "Bicicleta"
         destino = entry_parts[1]
         if(destino not in self.ruas_disp):
             print("Esta Rua não existe")
@@ -63,9 +69,20 @@ class Xdelta:
         status = 0
         
         if(encomenda_valida == 1):
-            self.Encomendas[ID] = encomenda(ID,peso,destino,volume,status,epoch_time,ID_condutor,None,self.General_Graph)
+            self.Encomendas[ID] = encomenda(ID,peso,destino,volume,status,epoch_time,ID_condutor,veiculo,self.General_Graph)
+            with open(filename, 'a') as file:
+                file.write(f"{ID},{peso},{destino},{volume},{status},{epoch_time},{ID_condutor},{veiculo}\n")
+            
+            self.Encomendas[ID] = encomenda(ID,peso,destino,volume,status,epoch_time,ID_condutor,veiculo,self.General_Graph)
+
+            if(ID_condutor in self.Estafetas.keys()):
+                estafeta = self.Estafetas[ID_condutor]
+                estafeta.adicionar_encomenda(self.Encomendas.get(ID))
+
         else:
             print("Encomenda inválida")
+
+        
 
     def CarregarEncomendas(self):
         filename = "Encomendas.txt"
@@ -80,15 +97,19 @@ class Xdelta:
                 peso = int(entry_parts[1])
                 destino = entry_parts[2]
                 volume = int(entry_parts[3])
-                ID_condutor = int(entry_parts[4])
+                status = int(entry_parts[4])
                 epoch_time = int(entry_parts[5])
-                status = int(entry_parts[6])
+                ID_condutor = int(entry_parts[6])
                 vehicle_type = entry_parts[7].strip()
 
                 # Convert epoch time to a datetime object
                 timestamp = datetime.datetime.utcfromtimestamp(epoch_time)
 
                 self.Encomendas[ID] = encomenda(ID,peso,destino,volume,status,epoch_time,ID_condutor,vehicle_type,self.General_Graph)
+
+                if(ID_condutor in self.Estafetas.keys()):
+                    estafeta = self.Estafetas[ID_condutor]
+                    estafeta.adicionar_encomenda(self.Encomendas.get(ID))
 
     def CarregarEstafetas(self):
         filename = "Estafetas.txt"
@@ -106,13 +127,18 @@ class Xdelta:
                 # Convert epoch time to a datetime object
 
                 self.Estafetas[id] = condutor(nome,id,pos_inicial)
+                
 
     def AdicionarEstafeta(self):
 
         print("Digite as seguintes informações com exatamente o seguinte formato nome:")
         saida = (input(""))
+        filename = "Estafetas.txt"
         entry_parts = saida.split(',')
         ID = self.Package_Counter
         nome = entry_parts[0]
         
         self.Estafetas[ID] = condutor(nome,ID,"Rua do Fiado")
+        with open(filename, 'a') as file:
+                file.write(f"{nome},{ID},Rua do Fiado\n")
+

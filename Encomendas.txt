@@ -4,17 +4,17 @@
 4,4,Rua da Rotunda,0,0,1704544200,4,Bicicleta
 5,1,Rua do Mirante,0,0,1704574200,4,Bicicleta
 6,15,Rua do Avenida do Mar,0,0,1704574320,3,Moto
-7,13,Rua do ,0,0,1704535200,2,Moto
-8,3,Rua do Presidente,0,0,1704535800,1,Bicicleta
-9,19,Rua do Presidente,0,0,1704540720,2,Moto
-10,11,Rua do Presidente,0,0,1704540840,2,Moto
-11,8,Rua do Presidente,0,0,1704555780,3,Moto
-12,7,Rua do Presidente,0,0,1704532920,4,Moto
-13,20,Rua do Presidente,0,0,1704535980,4,Moto
-14,7,Rua do Presidente,0,0,1704556800,1,Moto
-15,9,Rua do Presidente,0,0,1704557700,1,Moto
-16,2,Rua do Presidente,0,0,1704557880,2,Bicicleta
-17,3,Rua do Presidente,0,0,1704559800,3,Bicicleta
-18,1,Rua do Presidente,0,0,1704561600,4,Bicicleta
-19,4,Rua do Presidente,0,0,1704562080,1,Bicicleta
-20,10,Rua do Presidente,0,0,1704562560,2,Moto
+7,13,Rua da Rotunda,0,0,1704535200,2,Moto
+8,3,Praça das Rosas,0,0,1704535800,1,Bicicleta
+9,19,Rua do Adamastor,0,0,1704540720,2,Moto
+10,11,Rua do Mirante,0,0,1704540840,2,Moto
+11,8,Avenida do Mar,0,0,1704555780,3,Moto
+12,7,Rua Almeida Garret,0,0,1704532920,4,Moto
+13,20,Avenida dos Exploradores,0,0,1704535980,4,Moto
+14,7,Rua Almada Negreiros,0,0,1704556800,1,Moto
+15,9,Avenida da Praia,0,0,1704557700,1,Moto
+16,2,Travessa do Rosmaninho,0,0,1704557880,2,Bicicleta
+17,3,Rua Caldas de Cima,0,0,1704559800,3,Bicicleta
+18,1,Avenida Secundaria,0,0,1704561600,4,Bicicleta
+19,4,Rua do Ribeiro,0,0,1704562080,1,Bicicleta
+20,10,Avenida da Serrinha,0,0,1704562560,2,Moto

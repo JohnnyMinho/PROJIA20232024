@@ -27,15 +27,15 @@ def main():
         if saida == 0:
             print("saindo.......")
         elif saida == 1:
-            print(XPress_Delta.g.m_graph)
+            print(XPress_Delta.General_Graph.m_graph)
             l=input("prima enter para continuar")
         elif saida == 2:
-            XPress_Delta.g.desenha()
+            XPress_Delta.General_Graph.desenha()
         elif saida == 3:
-            print(XPress_Delta.g.m_graph.keys())
+            print(XPress_Delta.General_Graph.m_graph.keys())
             l = input("prima enter para continuar")
         elif saida == 4:
-            print(XPress_Delta.g.imprime_aresta())
+            print(XPress_Delta.General_Graph.imprime_aresta())
             l = input("prima enter para continuar")
         elif saida == 5:
             inicio=input("Nodo inicial->")

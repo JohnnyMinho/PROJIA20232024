@@ -8,10 +8,10 @@ class condutor:
         #Carga máxima, Velocidade
     }
 
-    def __init__(self,nome,ID,ultima_pos,veiculo,peso_total,rating = None):
+    def __init__(self,nome,ID,ultima_pos):
         self.ID = ID
         self.nome = nome
-        self.rating = None
+        self.rating = 0
         self.ultima_pos = ultima_pos
         self.veiculo_atual = None
         self.peso_total = 0

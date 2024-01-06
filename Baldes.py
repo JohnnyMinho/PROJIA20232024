@@ -19,7 +19,6 @@ from queue import Queue
 
 class Balde():
 
-
     # start deve ser a capacidade dos dois baldes no inicio ex (0,0) "estado inicial"
     # goal deve ser o objectivo ex (2,0).  " estado final"
     # os estados são representados por "(x,y)" como string, em que x e y representam

@@ -10,14 +10,19 @@ def imprimir_menu():
     4. Imprimir arestas de grafo
     5. DFS
     6. BFS
-    7. Outra solução
-    8. Sair"""
+    7. A* Estrela
+    8. Greedy
+    9. Adicionar Estafeta
+    10. Nova Encomenda
+    0. Sair"""
     print(menu)
 
 def main():
 
     XPress_Delta=Xdelta()
     XPress_Delta.ImplementarGrafo()
+    XPress_Delta.CarregarEncomendas()
+    XPress_Delta.CarregarEstafetas()
     saida = -1
 
     while saida != 0:
@@ -67,14 +72,15 @@ def main():
                 lista = XPress_Delta.imprimeA(a)
                 print(lista)
             l = input("prima enter para continuar")
+        elif saida == 8:
+            print("TO DO")
+        elif saida == 9:
+            XPress_Delta.AdicionarEstafeta()
+        elif saida == 10:
+            XPress_Delta.AdicionarEncomenda()
         else:
-            print("you didn't add anything")
+            print("NENHUMA OPÇÃO SELECIONADA")
             l = input("prima enter para continuar")
-
-
-
-
-
 
 if __name__ == "__main__":
     main()

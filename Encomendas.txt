@@ -3,8 +3,8 @@
 3,6,Avenida da Lageosa,0,0,1704547800,3,Moto
 4,4,Rua da Rotunda,0,0,1704544200,4,Bicicleta
 5,1,Rua do Mirante,0,0,1704574200,4,Bicicleta
-6,15,Rua do Avenida do Mar,0,0,1704574320,3,Moto
-7,13,Rua da Rotunda,0,0,1704535200,2,Moto
+6,15,Avenida do Mar,0,0,1704547900,3,Moto
+7,12,Rua da Igreja,0,0,1704535200,2,Moto
 8,3,Praça das Rosas,0,0,1704535800,1,Bicicleta
 9,19,Rua do Adamastor,0,0,1704540720,2,Moto
 10,11,Rua do Mirante,0,0,1704540840,2,Moto
@@ -18,3 +18,5 @@
 18,1,Avenida Secundaria,0,0,1704561600,4,Bicicleta
 19,4,Rua do Ribeiro,0,0,1704562080,1,Bicicleta
 20,10,Avenida da Serrinha,0,0,1704562560,2,Moto
+21,3,Praça das Rosas,0,0,1704528010,1,Bicicleta
+22,6,Rua do Navegador,0,0,1704535380,2,Moto

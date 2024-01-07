@@ -18,7 +18,7 @@ class condutor:
         self.encomendas = []
 
     def setNewRating(self, rating):
-        self.rating = rating
+        self.rating = self.rating + rating
         
     def NovaPos(self, pos):
         self.ultima_pos = pos
@@ -34,3 +34,9 @@ class condutor:
         self.encomendas.sort(key=lambda encomenda: encomenda.prazo)
         if(self.ID == 1):
             print(str(self.encomendas[0].prazo) + '\n')
+
+    def ImprimirInfo(self):
+        print("ID->"+self.ID)
+        print("Nome->"+self.nome)
+        print("Rating->"+self.rating)
+        print("Encomendas->"+str(self.encomendas))

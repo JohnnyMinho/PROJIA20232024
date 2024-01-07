@@ -1,18 +1,18 @@
-"Rua da Rola" [(Rua do Presidente, 150)(Rua da Igreja, 100)(Praça Longa, 120)] 200
+"Rua da Rola" [(Rua do Presidente, 150)(Rua da Igreja, 100)(Praça Longa, 120)] 110
 "Rua do Presidente" [(Rua da Rola, 200)(Praça Longa, 120)] 150
 "Rua da Igreja" [(Rua da Rola, 200)(Praça Longa, 120)] 100
 "Praça Longa" [(Rua da Rola, 200)(Rua do Presidente, 150)(Rua da Igreja, 100)] 120
-"Rua da Ferrovia" [(Rua da Rotunda, 160)(Rua Bairro do Sol, 180)(Praça Longa, 120)] 200
-"Rua Bairro do Sol" [(Rua da Ferrovia, 200)(Rua da Rotunda, 160)(Avenida da Lageosa, 200)(Rua Caldas de Cima, 70)(Avenida Secundaria, 90)(Rua 13 de Maio, 70)] 180
-"Rua da Rotunda" [(Rua da Ferrovia, 200)(Rua Bairro do Sol, 180)(Avenida da Lageosa, 200)] 160
-"Avenida da Lageosa" [(Rua Bairro do Sol, 180)(Rua da Rotunda, 160)(Rua Caldas de Cima, 70)] 200
+"Rua da Ferrovia" [(Rua da Rotunda, 160)(Rua Bairro do Sol, 180)(Praça Longa, 120)] 170
+"Rua Bairro do Sol" [(Rua da Ferrovia, 200)(Rua da Rotunda, 160)(Avenida da Lageosa, 200)(Rua Caldas de Cima, 70)(Avenida Secundaria, 90)(Rua 13 de Maio, 70)] 170
+"Rua da Rotunda" [(Rua da Ferrovia, 200)(Rua Bairro do Sol, 180)(Avenida da Lageosa, 200)] 150
+"Avenida da Lageosa" [(Rua Bairro do Sol, 180)(Rua da Rotunda, 160)(Rua Caldas de Cima, 70)] 140
 "Rua Caldas de Cima" [(Rua Bairro do Sol, 180)(Avenida da Lageosa, 200)(Avenida Secundaria, 90)] 70
 "Avenida Secundaria" [(Rua Bairro do Sol, 180)(Rua Caldas de Cima, 70)(Rua Campo Grande, 60)(Rua Adelino Arantes, 80)] 90
 "Rua 13 de Maio" [(Rua Bairro do Sol, 180)(Praceta Campo de Futebol, 90)] 70
 "Praceta Campo de Futebol" [(Rua 13 de Maio, 70)(Rua Campo Grande, 60)] 90
 "Rua Campo Grande" [(Avenida Secundaria, 90)(Praceta Campo de Futebol, 90)(Rua Adelino Arantes, 80)(Largo do Monte, 60)(Rua do Toural, 80)] 60
 "Rua Adelino Arantes" [(Avenida Secundaria, 90)(Rua Campo Grande, 60)(Rua da Regueira, 80)(Rua do Ribeiro, 180)] 80
-"Largo do Monte" [(Rua Campo Grande, 60)(Rua da Regueira, 80)] 60
+"Largo do Monte" [(Rua Campo Grande, 60)(Rua da Regueira, 80)] 70
 "Rua da Regueira" [(Rua Adelino Arantes, 80)(Largo do Monte, 60)(Rua do Toural, 80)(Rua do Ribeiro, 180)] 80
 "Rua do Toural" [(Rua Campo Grande, 60)(Rua da Regueira, 80)(Praça das Rosas, 80)] 80
 "Rua do Ribeiro" [(Rua Adelino Arantes, 80)(Rua da Regueira, 80)(Avenida do Parque, 40)(Praça das Rosas, 80)(Avenida da Liberdade, 40)(Rua do Mirante, 40)] 180
@@ -21,10 +21,10 @@
 "Avenida da Liberdade" [(Rua do Ribeiro, 180)(Avenida do Parque, 40)(Rua do Adamastor, 30)(Rua Cortelhos, 40)] 40
 "Rua do Adamastor" [(Avenida da Liberdade, 40)(Rua Cortelhos, 40)(Avenida da Serrinha, 50)(Rua do Fiado, 30)] 30
 "Rua Cortelhos" [(Avenida da Liberdade, 40)(Rua do Adamastor, 30)(Rua da Vida, 50)] 40
-"Rua da Vida" [(Rua Cortelhos, 40)(Avenida da Serrinha, 50)] 50
-"Avenida da Serrinha" [(Rua do Adamastor, 30)(Rua da Vida, 50)(Rua do Mirante, 40)] 50
-"Rua do Mirante" [(Rua do Ribeiro, 180)(Avenida da Serrinha, 50)(Rua do Fiado, 30)] 40
-"Rua do Fiado" [(Rua do Adamastor, 30)(Rua do Mirante, 40)(Rua Almada Negreiros, 20)] 30
+"Rua da Vida" [(Rua Cortelhos, 40)(Avenida da Serrinha, 50)] 70
+"Avenida da Serrinha" [(Rua do Adamastor, 30)(Rua da Vida, 50)(Rua do Mirante, 40)] 45
+"Rua do Mirante" [(Rua do Ribeiro, 180)(Avenida da Serrinha, 50)(Rua do Fiado, 30)] 70
+"Rua do Fiado" [(Rua do Adamastor, 30)(Rua do Mirante, 40)(Rua Almada Negreiros, 20)] 25
 "Rua Almada Negreiros" [(Rua do Fiado, 30)(Avenida da Praia, 20)(Rua do Porto, 30)(Rua do Navegador, 20)] 20
 "Avenida da Praia" [(Rua Almada Negreiros, 20)(Travessa do Rosmaninho, 40)] 20
 "Travessa do Rosmaninho" [(Avenida da Praia, 20)(Rua do Porto, 30)] 40
@@ -36,5 +36,5 @@
 "Rua 25 de Abril" [(Avenida do Mar, 20)(Rua Almeida Garret, 30)(Rua das Gaivotas, 30)] 30
 "Rua das Gaivotas" [(Rua do Navegador, 20)(Rua 25 de Abril, 30)(Rua dos Navios, 30)] 30
 "Rua dos Navios" [(Avenida do Mar, 20)(Rua das Gaivotas, 30)(Avenida dos Exploradores, 20)] 30
-"Avenida dos Exploradores" [(Rua dos Navios, 30)(Rua Adelino Arantes Ledo, 20)] 20
-"Rua Adelino Arantes Ledo" [(Avenida dos Exploradores, 20)] 20 
+"Avenida dos Exploradores" [(Rua dos Navios, 30)(Rua Adelino Arantes Ledo, 20)] 35
+"Rua Adelino Arantes Ledo" [(Avenida dos Exploradores, 20)] 20

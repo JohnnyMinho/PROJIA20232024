@@ -112,27 +112,39 @@ class Grafo:
     # Procura DFS
     ####################################################################################
 
-    def procura_DFS(self, start, end, path=[], visited=set()):
-        path.append(start)
-        visited.add(start)
+    def procura_DFS(self, start, end, velocidade, path=None, visited=None):
+        if path is None:
+            path = [start]
+        if visited is None:
+            visited = set([start])
 
         if start == end:
             # calcular o custo do caminho funçao calcula custo.
             custoT = self.calcula_custo(path)
-            return (path, custoT)
+            # Como o custo é equivalente ao número de metros percorridos, podemos calcular a velocidade desta maneira
+            tempo_viagem = custoT / velocidade
+
+            resultado_final = [path,custoT,tempo_viagem]
+            return resultado_final
+
         for (adjacente, peso) in self.m_graph[start]:
             if adjacente not in visited:
-                resultado = self.procura_DFS(adjacente, end, path, visited)
+                path.append(adjacente)
+                visited.add(adjacente)
+                resultado = self.procura_DFS(adjacente, end, velocidade, path, visited)
+                
                 if resultado is not None:
                     return resultado
-        path.pop()  # se nao encontra remover o que está no caminho......
+
+        path.pop()  # Se não encontra, remover o último elemento do caminho
         return None
+
 
     #####################################################
     # Procura BFS
     ######################################################
 
-    def procura_BFS(self, start, end):
+    def procura_BFS(self, start, end,velocidade):
         # definir nodos visitados para evitar ciclos
         visited = set()
         fila = Queue()
@@ -148,6 +160,7 @@ class Grafo:
         path_found = False
         while not fila.empty() and path_found == False:
             nodo_atual = fila.get()
+            
             if nodo_atual == end:
                 path_found = True
             else:
@@ -156,9 +169,6 @@ class Grafo:
                         fila.put(adjacente)
                         parent[adjacente] = nodo_atual
                         visited.add(adjacente)
-
-
-
         # Reconstruir o caminho
 
         path = []
@@ -170,7 +180,10 @@ class Grafo:
             path.reverse()
             # funçao calcula custo caminho
             custo = self.calcula_custo(path)
-        return (path, custo)
+            tempo_gastado = custo/velocidade
+            resultado_final = [path,custo,tempo_gastado]
+            return resultado_final
+        return None
 
     ###################################################
     # Função   getneighbours, devolve vizinhos de um nó
@@ -213,6 +226,7 @@ class Grafo:
 
     def add_heuristica(self, n, estima):
         n1 = Node(n)
+        #print("Node ->" + n + '\n' + 'Estima->' + estima + '\n')
         if n1 in self.m_nodes:
             self.m_h[n] = estima
 
@@ -246,7 +260,7 @@ class Grafo:
     #    A*
     ##########################################
 
-    def procura_aStar(self, start, end):
+    def procura_aStar(self, start, end,velocidade):
         # open_list is a list of nodes which have been visited, but who's neighbors
         # haven't all been inspected, starts off with the start node
         # closed_list is a list of nodes which have been visited
@@ -256,7 +270,7 @@ class Grafo:
 
         # g contains current distances from start_node to all other nodes
         # the default value (if it's not found in the map) is +infinity
-        g = {}  ##  g é apra substiruir pelo peso  ???
+        g = {}  
 
         g[start] = 0
 
@@ -273,7 +287,7 @@ class Grafo:
                     n = v
                 else:
                     flag = 1
-                    calc_heurist[v] = g[v] + self.getH(v)
+                    calc_heurist[v] = g[v] + int(self.getH(v))
             if flag == 1:
                 min_estima = self.calcula_est(calc_heurist)
                 n = min_estima
@@ -294,8 +308,12 @@ class Grafo:
 
                 reconst_path.reverse()
 
+                custo = self.calcula_custo(reconst_path)
+
+                tempo_gasto = custo / velocidade
+                resultado_final = [reconst_path,custo,tempo_gasto]
                 #print('Path found: {}'.format(reconst_path))
-                return (reconst_path, self.calcula_custo(reconst_path))
+                return resultado_final
 
             # for all neighbors of the current node do
             for (m, weight) in self.getNeighbours(n):  # definir função getneighbours  tem de ter um par nodo peso
@@ -341,7 +359,7 @@ class Grafo:
     #   Greedy
     ##########################################
 
-    def greedy(self, start, end):
+    def greedy(self, start, end,velocidade):
         # open_list é uma lista de nodos visitados, mas com vizinhos
         # que ainda não foram todos visitados, começa com o  start
         # closed_list é uma lista de nodos visitados
@@ -380,7 +398,13 @@ class Grafo:
 
                 reconst_path.reverse()
 
-                return (reconst_path, self.calcula_custo(reconst_path))
+                custo = self.calcula_custo(reconst_path)
+
+                tempo_gasto = custo / velocidade
+
+                resultado_final = [reconst_path,custo,tempo_gasto]
+
+                return resultado_final
 
             # para todos os vizinhos  do nodo corrente
             for (m, weight) in self.getNeighbours(n):

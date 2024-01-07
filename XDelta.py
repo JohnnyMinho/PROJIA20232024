@@ -78,6 +78,7 @@ class Xdelta:
             if(ID_condutor in self.Estafetas.keys()):
                 estafeta = self.Estafetas[ID_condutor]
                 estafeta.adicionar_encomenda(self.Encomendas.get(ID))
+                estafeta.organizaportempo()
 
         else:
             print("Encomenda inválida")
@@ -110,6 +111,7 @@ class Xdelta:
                 if(ID_condutor in self.Estafetas.keys()):
                     estafeta = self.Estafetas[ID_condutor]
                     estafeta.adicionar_encomenda(self.Encomendas.get(ID))
+                    estafeta.organizaportempo()
 
     def CarregarEstafetas(self):
         filename = "Estafetas.txt"
@@ -141,4 +143,47 @@ class Xdelta:
         self.Estafetas[ID] = condutor(nome,ID,"Rua do Fiado")
         with open(filename, 'a') as file:
                 file.write(f"{nome},{ID},Rua do Fiado\n")
+
+    #Funções de auxilio aos algoritmos
+
+    def organizar_percurso(self):
+        #Função que auxilia com a organização de um percurso para o estafeta tendo em conta a prioridade de cada encomenda
+        #Esta função não têm interesse em maximizar a carga de cada veículo antes da saída sendo que a partir do momento que não há maneira de respeitar
+        #As regras impostas (encomendas ou peso acumulado para o veículo em causa), este é expedido.
+        start_inicial = "Rua do Fiado"
+        lista_percurso = []
+        peso_acumulado = 0
+        veiculo_anterior = []
+
+        for key, object in self.Estafetas.items():
+            for encomenda in self.Estafetas[key].encomendas:
+                veiculos_disp = self.Estafetas[key].Veiculos_Disp
+                #As encomendas já estão organizadas por ordem de prioridade, logo apenas é preciso as organizar segundo o veículo e o peso
+                #Caso n encomendas seguidas sejam realizadas no mesmo veículo, estas podem ser feitas seguidamente
+                #Caso uma encomenda tenha um veículo diferente da anterior, o estafeta vai ter de voltar à estação de recolha na Rua do Fiado
+                #Uma solução para este problema seria verificar se o Estafa teria uma vantagem em agrupar o maior número possível de encomendas no veículo
+                #Esta solução seria viável se o número de encomendas que poderiam ficar em atraso fosse reduzido.
+
+                peso_encomenda = encomenda.peso
+                veiculo_atual = veiculos_disp[encomenda.transporte] #Para nos facilitar a vida ficamos com os dados do veículo, se for uma Moto ficamos com [20,35], uma bicicleta [5,10]
+                #Basicamente para ver o peso máximo fazemos veículo_atual[0], para a velocidade é veículo_atual[1]
+                if(veiculo_atual == veiculo_anterior):
+                    #Se o veículo for igual ao que vai usado para a encomenda anterior, podemos tentar acumular outra encomenda
+                    if(peso_acumulado + peso_encomenda > veiculo_atual[0]):
+                        #O peso acumulado no veículo excede a capacidade máxima, logo ele prossegue para as entregas e depois vai ter de voltar ao local de recolha
+                        lista_percurso.append("Rua do Fiado")
+                        lista_percurso.append(encomenda.destino)
+                        peso_acumulado = 0
+                    elif(peso_acumulado + peso_encomenda < veiculo_atual[0]):
+                        #O peso acumulado ainda não atingiu o peso limite do veículo, logo podemos aproveitar e levar mais encomendas
+                        lista_percurso.append(encomenda.destino)
+                        peso_acumulado = peso_acumulado+peso_encomenda
+                else:
+                    #O veículo é diferente do anterior.
+                    lista_percurso.append("Rua do Fiado")
+                    lista_percurso.append(encomenda.destino)
+                    peso_acumulado = 0 
+                    peso_acumulado = peso_acumulado+peso_encomenda #Como vamos trocar o veículo temos de reniciar o peso
+                
+        return lista_percurso
 

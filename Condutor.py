@@ -30,3 +30,7 @@ class condutor:
         if(veiculo in self.Veiculos_Disp):
             self.veiculo_atual = veiculo
 
+    def organizaportempo(self):
+        self.encomendas.sort(key=lambda encomenda: encomenda.prazo)
+        if(self.ID == 1):
+            print(str(self.encomendas[0].prazo) + '\n')

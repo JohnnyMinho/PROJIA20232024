@@ -16,6 +16,8 @@ class encomenda:
         self.prazo = prazo #Vai usar o calendário gregório 
         self.ID_estafeta = ID_Estafeta
         self.transporte = veiculo
+        self.caminho = []
+        self.Ultimo_Metodo_Usado = ""
         self.start = None #O start da primeira encomenda do estafeta é sempre o 
 
     def RatingEncomenda(self,rating):
@@ -34,20 +36,28 @@ class encomenda:
     def setStart(self,start):
         self.start = start
 
+    def SetCaminho(self, caminho):
+        self.caminho = caminho
+
+    def MetodoUsado(self, metodo):
+        self.Ultimo_Metodo_Usado = metodo
+
     def ImprimirInfo(self):
-        print("ID->"+self.id)
-        print("Peso->"+self.peso)
+        print("ID->"+str(self.id))
+        print("Peso->"+str(self.peso))
         print("Destino->"+self.destino)
-        print("Custo->"+self.custo)
+        print("Custo->"+str(self.custo))
         if(self.estado == 1):
-            print("Estado->"+self.estado + ", Entregue")
+            print("Estado->"+ str(self.estado) + ", Entregue")
         elif(self.estado == 2):
-            print("Estado->" + self.estado + ", Erro na Entrega")
+            print("Estado->" + str(self.estado) + ", Erro na Entrega")
         elif(self.estado == 0):
-            print("Estado->" + self.estado + ", Por entregar")
+            print("Estado->" + str(self.estado) + ", Por entregar")
         if(self.rating == 0):
-            print("Rating->"+self.rating+"Entregue dora de prazo")
-        elif(self.rating == 0):
-            print("Rating->"+self.rating+"Entregue dentro do prazo")
-        print("ID_Estafeta->"+self.ID_estafeta)
-        printf("Veículo usado ->"+self.transporte)
+            print("Rating->"+str(self.rating)+" Entregue fora de prazo/Encomenda Não entregue")
+        elif(self.rating == 1):
+            print("Rating->"+str(self.rating)+" Entregue dentro do prazo")
+        print("ID_Estafeta->"+str(self.ID_estafeta))
+        print("Veículo usado ->"+self.transporte)
+        print("Caminho usado para a Entrega -> " + str(self.caminho))
+        print("Ultimo Algoritmo Usado ->"+ self.Ultimo_Metodo_Usado + '\n')

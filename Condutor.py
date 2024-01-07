@@ -36,7 +36,7 @@ class condutor:
             print(str(self.encomendas[0].prazo) + '\n')
 
     def ImprimirInfo(self):
-        print("ID->"+self.ID)
+        print("ID->"+str(self.ID))
         print("Nome->"+self.nome)
-        print("Rating->"+self.rating)
-        print("Encomendas->"+str(self.encomendas))
+        print("Rating->"+str(self.rating))
+        print("Encomendas->"+str(self.encomendas) + '\n')

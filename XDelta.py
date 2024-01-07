@@ -159,11 +159,11 @@ class Xdelta:
                 file.write(f"{nome},{ID},Rua do Fiado\n")
 
     def VerEstafetas(self):
-        for key, estafeta in self.Estafetas:
+        for key, estafeta in self.Estafetas.items():
             self.Estafetas[key].ImprimirInfo()
     
     def VerEncomendas(self):
-        for key, encomendas in self.Estafetas:
+        for key, encomendas in self.Encomendas.items():
             self.Encomendas[key].ImprimirInfo()
 
     #Funções de auxilio aos algoritmos
@@ -251,7 +251,7 @@ class Xdelta:
                         stop_nodo = stop.destino
                         prazo_entrega = stop.prazo
                         stop_e_encomenda = 1
-                        stop.status = 1
+                        self.Encomendas[stop.id].SetEstado(1)
 
                     velocidade = int((int(veiculos_atual[1]) * 1000 / 3600))
 
@@ -266,14 +266,25 @@ class Xdelta:
                         print("Tempo de Viagem -> " + str(tempo_arredondado))
                         if(Hora_inicial+tempo_arredondado < prazo_entrega and stop_e_encomenda == 1):
                             print("Dentro do prazo")
-                            stop.rating = 1
+                            self.Encomendas[stop.id].rating = 1
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("DFS")
                             self.Estafetas[key].setNewRating(1)
                         elif(Hora_inicial+tempo_arredondado > prazo_entrega and stop_e_encomenda == 1):
                             print("Fora do prazo")
-                            stop.rating = 0
+                            self.Encomendas[stop.id].rating = 0
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("DFS")
                             self.Estafetas[key].setNewRating(-1)
                             caminho_total = caminho_total+resultado[0]
                     else:
+                        if(stop_e_encomenda == 1):
+                            self.Encomendas[stop.id].rating = 0
+                            self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].SetEstado(2)
+                            self.Encomendas[stop.id].MetodoUsado("DFS")
                         print("Error ->" + str(resultado)+'\n')
                         caminho_total.append(None)
                     prazo_entrega = 0
@@ -313,7 +324,7 @@ class Xdelta:
                         stop_nodo = stop.destino
                         prazo_entrega = stop.prazo
                         stop_e_encomenda = 1
-                        stop.status = 1
+                        self.Encomendas[stop.id].SetEstado(1)
 
                     velocidade = int((int(veiculos_atual[1]) * 1000 / 3600))
 
@@ -328,14 +339,25 @@ class Xdelta:
                         print("Tempo de Viagem -> " + str(tempo_arredondado))
                         if(Hora_inicial+tempo_arredondado < prazo_entrega and stop_e_encomenda == 1):
                             print("Dentro do prazo")
-                            stop.rating = 1
+                            self.Encomendas[stop.id].rating = 1
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("BFS")
                             self.Estafetas[key].setNewRating(1)
                         elif(Hora_inicial+tempo_arredondado > prazo_entrega and stop_e_encomenda == 1):
                             print("Fora do prazo")
-                            stop.rating = 0
+                            self.Encomendas[stop.id].rating = 0
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
                             self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].MetodoUsado("BFS")
                             caminho_total = caminho_total+resultado[0]
                     else:
+                        if(stop_e_encomenda == 1):
+                            self.Encomendas[stop.id].rating = 0
+                            self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].SetEstado(2)
+                            self.Encomendas[stop.id].MetodoUsado("BFS")
                         print("Error ->" + str(resultado)+'\n')
                         caminho_total.append(None)
                     prazo_entrega = 0
@@ -375,7 +397,7 @@ class Xdelta:
                         stop_nodo = stop.destino
                         prazo_entrega = stop.prazo
                         stop_e_encomenda = 1
-                        stop.status = 1
+                        self.Encomendas[stop.id].SetEstado(1)
 
                     velocidade = int((int(veiculos_atual[1]) * 1000 / 3600))
 
@@ -390,14 +412,25 @@ class Xdelta:
                         print("Tempo de Viagem -> " + str(tempo_arredondado))
                         if(Hora_inicial+tempo_arredondado < prazo_entrega and stop_e_encomenda == 1):
                             print("Dentro do prazo")
-                            stop.rating = 1
+                            self.Encomendas[stop.id].rating = 1
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("Greedy")
                             self.Estafetas[key].setNewRating(1)
                         elif(Hora_inicial+tempo_arredondado > prazo_entrega and stop_e_encomenda == 1):
                             print("Fora do prazo")
-                            stop.rating = 0
+                            self.Encomendas[stop.id].rating = 0
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].MetodoUsado("Greedy")
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
                             self.Estafetas[key].setNewRating(-1)
                             caminho_total = caminho_total+resultado[0]
                     else:
+                        if(stop_e_encomenda == 1):
+                            self.Encomendas[stop.id].rating = 0
+                            self.Encomendas[stop.id].MetodoUsado("Greedy")
+                            self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].SetEstado(2)
                         print("Error ->" + str(resultado)+'\n')
                         caminho_total.append(None)
                     prazo_entrega = 0
@@ -436,7 +469,7 @@ class Xdelta:
                         stop_nodo = stop.destino
                         prazo_entrega = stop.prazo
                         stop_e_encomenda = 1
-                        stop.status = 1
+                        self.Encomendas[stop.id].SetEstado(1)
 
                     velocidade = int((int(veiculos_atual[1]) * 1000 / 3600))
 
@@ -451,14 +484,28 @@ class Xdelta:
                         print("Tempo de Viagem -> " + str(tempo_arredondado))
                         if(Hora_inicial+tempo_arredondado < prazo_entrega and stop_e_encomenda == 1):
                             print("Dentro do prazo")
-                            stop.rating = 1
+                            self.Encomendas[stop.id].rating = 1
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("A*")
                             self.Estafetas[key].setNewRating(1)
+                            stop_e_encomenda = 0
                         elif(Hora_inicial+tempo_arredondado > prazo_entrega and stop_e_encomenda == 1):
                             print("Fora do prazo")
-                            stop.rating = 0
+                            self.Encomendas[stop.id].rating = 0
                             self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].SetCaminho(resultado[0])
+                            self.Encomendas[stop.id].SetCusto(resultado[1])
+                            self.Encomendas[stop.id].MetodoUsado("A*")
                             caminho_total = caminho_total+resultado[0]
+                            stop_e_encomenda = 0
                     else:
+                        if(stop_e_encomenda == 1):
+                            self.Encomendas[stop.id].rating = 0
+                            self.Encomendas[stop.id].MetodoUsado("A*")
+                            self.Estafetas[key].setNewRating(-1)
+                            self.Encomendas[stop.id].SetEstado(2)
+                            stop_e_encomenda = 0
                         print("Error ->" + str(resultado)+'\n')
                         caminho_total.append(None)
                     prazo_entrega = 0

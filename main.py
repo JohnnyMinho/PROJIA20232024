@@ -72,12 +72,16 @@ def main():
             l = input("prima enter para continuar")
         elif saida == 9:
             XPress_Delta.AdicionarEstafeta()
+            l = input("prima enter para continuar")
         elif saida == 10:
             XPress_Delta.AdicionarEncomenda()
+            l = input("prima enter para continuar")
         elif saida == 11:
             XPress_Delta.VerEncomendas()
+            l = input("prima enter para continuar")
         elif saida == 12:
             XPress_Delta.VerEstafetas()
+            l = input("prima enter para continuar")
         else:
             print("NENHUMA OPÇÃO SELECIONADA")
             l = input("prima enter para continuar")
